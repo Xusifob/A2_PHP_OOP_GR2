@@ -1,6 +1,6 @@
 <?php
 
-
+/** @var \Doctrine\ORM\EntityManager $em */
 $em = require __DIR__ . '/header_connect.php';
 
 $error = NULL;
@@ -11,10 +11,13 @@ $PokemonRepo = $em->getRepository('Xusifob\PokemonBattle\Pokemon');
 $trainerRepo = $em->getRepository('Xusifob\PokemonBattle\Trainer');
 
 try{
+    /** @var \Xusifob\PokemonBattle\Trainer $trainer */
     $trainer = $trainerRepo->find($_SESSION['trainer']);
+    /** @var \Xusifob\PokemonBattle\Pokemon $pokemon */
     $pokemon = $PokemonRepo->findOneBy([
         'trainer' => $trainer,
     ]);
+    /** @var Array $pokemons */
     $pokemons = $PokemonRepo->findAll();
 }
 catch(Exception $e){

@@ -1,9 +1,7 @@
 <?php
 
+/** @var \Doctrine\ORM\EntityManager $em */
 $em = require __DIR__ . '/header.php';
-
-
-
 
 
 

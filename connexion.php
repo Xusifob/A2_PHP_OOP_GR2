@@ -1,5 +1,6 @@
 <?php
 
+/** @var \Doctrine\ORM\EntityManager $em */
 $em = require __DIR__ . '/header.php';
 
 $error = NULL;
@@ -9,6 +10,7 @@ if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pass
     $trainerRepo = $em->getRepository('Xusifob\PokemonBattle\Trainer');
 
     try {
+        /** @var \Xusifob\PokemonBattle\Trainer $trainer */
         $trainer = $trainerRepo->findOneBy([
             'userName' => $_POST['username']
         ]);

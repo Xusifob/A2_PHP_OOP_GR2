@@ -1,6 +1,6 @@
 <?php
 
-
+/** @var \Doctrine\ORM\EntityManager $em */
 $em = require __DIR__ . '/header_connect.php';
 
 use Xusifob\PokemonBattle\Pokemon;

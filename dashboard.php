@@ -1,7 +1,7 @@
 <?php
 
+/** @var \Doctrine\ORM\EntityManager $em */
 $em = require __DIR__ . '/header_connect.php';
-
 
 use Xusifob\PokemonBattle\Pokemon;
 
@@ -19,6 +19,7 @@ $dHeal = 0;
     $trainerRepo = $em->getRepository('Xusifob\PokemonBattle\Trainer');
 
     try{
+        /** @var \Xusifob\PokemonBattle\Trainer $trainer */
         $trainer = $trainerRepo->find($_SESSION['trainer']);
     }
     catch(Exception $e){
@@ -28,6 +29,7 @@ $dHeal = 0;
 
     // Get the pokemon
     try {
+        /** @var Pokemon $pokemon */
         $pokemon = $PokemonRepo->findOneBy([
             'trainer' => $trainer,
         ]);
@@ -52,11 +54,13 @@ $dHeal = 0;
         $dHeal = ($lastHeal+24*3600)-time();
 
     }
-    // Save the pokemon
+    // Save the new pokemon
     if(isset($_POST) && !empty($_POST)){
         if(isset($_POST['name']) && !empty($_POST['name']))
             if(isset($_POST['type']) && 'null' !== $_POST['type']){
+                /** @var Pokemon $pokemon */
                 $pokemon = new Pokemon();
+                // Create the new pokemon
                 try {
                     $pokemon
                         ->setType($_POST['type'])
@@ -72,6 +76,7 @@ $dHeal = 0;
                 }
                 try {
                     $em->persist($pokemon);
+                    // Add it in database
                     $em->flush();
                     header('Location:dashboard.php');
                 } catch (Exception $e) {
