@@ -43,8 +43,28 @@ class Pokemon implements Model\PokemonInterface {
 
     /**
      * @var int
+     * @Column(name="type", type="smallint", length=1)
      */
     private $type;
+
+    /**
+     * @var Trainer
+     *
+     * @ManyToOne(targetEntity="Trainer")
+     */
+    private $trainer;
+
+    /**
+     * @var int
+     * @Column(name="lastfight", type="integer", length=11)
+     */
+    private $lastfight;
+
+    /**
+     * @var int
+     * @Column(name="lastHeal", type="integer", length=11)
+     */
+    private $lastHeal;
 
     const TYPE_FIRE = 0;
 
@@ -52,8 +72,11 @@ class Pokemon implements Model\PokemonInterface {
 
     const TYPE_PLANT = 2;
 
+
+
+
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -62,7 +85,7 @@ class Pokemon implements Model\PokemonInterface {
 
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -85,7 +108,7 @@ class Pokemon implements Model\PokemonInterface {
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getHP()
     {
@@ -158,9 +181,81 @@ class Pokemon implements Model\PokemonInterface {
             $this->type = $type;
         else
             throw new \Exception('type must be TYPE_FIRE, TYPE_WATER OR TYPE_PLANT');
+        return $this;
+    }
+
+    /**
+     * @return Trainer
+     */
+    public function getTrainer()
+    {
+        return $this->trainer;
+    }
+
+    /**
+     * @param Trainer $trainer
+     * @return Pokemon
+     * @throws \Exception
+     */
+    public function setTrainer($trainer)
+    {
+        if(is_object($trainer))
+        $this->trainer = $trainer;
+        else
+            throw new \Exception('Trainer must be an object type Trainer');
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLastfight()
+    {
+        return $this->lastfight;
+    }
+
+    /**
+     * @param int $lastfight
+     * @return Pokemon
+     * @throws \Exception
+     */
+    public function setLastfight($lastfight)
+    {
+
+        if(is_int($lastfight) && $lastfight>0)
+            $this->lastfight = $lastfight;
+        else
+            throw new \Exception('Last fight an integer > 0');
+
+        return $this;
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastHeal()
+    {
+        return $this->lastHeal;
+    }
+
+    /**
+     * @param mixed $lastHeal
+     * @return Pokemon
+     * @throws \Exception
+     */
+    public function setLastHeal($lastHeal)
+    {
+        if(is_int($lastHeal) && $lastHeal>0)
+            $this->lastHeal = $lastHeal;
+        else
+            throw new \Exception('last heal must be an integer > 0');
+
+        return $this;
+    }
+
+
 
 
 }

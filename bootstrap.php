@@ -3,8 +3,10 @@
 function vardump($variable){
 echo '<pre>';
     var_dump($variable);
-    echo '<pre>';
+    echo '</pre>';
 }
+
+session_start();
 
 require __DIR__.'/vendor/autoload.php';
 
@@ -12,7 +14,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 $paths = [
-    "src",
+    "model",
 ];
 $isDevMode = true;
 
