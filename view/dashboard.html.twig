@@ -53,13 +53,13 @@
         {% elseif pokemon.hp == 0 and true != heal %}
             <p class="alert-danger">You can't heal your pokemon until : {{ dHeal }} second</p>
         {% endif %}
-        {% if true == fight %}
+        {% if true == fight and pokemon.hp != 0 %}
             <div class="text-center">
                 <a href="fight.php" class="btn btn-default">FIGHT</a>
             </div>
-        {% else %}
+        {% elseif pokemon.hp != 0 %}
             <p>Your pokemon can't fight until : {{ delta }} second</p>
-        {% endif %}
+11        {% endif %}
     </div>
 {% endif %}
 

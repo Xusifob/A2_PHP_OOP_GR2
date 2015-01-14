@@ -50,7 +50,7 @@ class Pokemon implements Model\PokemonInterface {
     /**
      * @var Trainer
      *
-     * @ManyToOne(targetEntity="Trainer")
+     * @OneToOne(targetEntity="Trainer")
      */
     private $trainer;
 
