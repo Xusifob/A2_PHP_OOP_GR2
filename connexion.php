@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Doctrine\ORM\EntityManager $em */
-$em = require __DIR__ . '/header.php';
+$em = require __DIR__ . '/_header.php';
 
 $error = NULL;
 if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])){

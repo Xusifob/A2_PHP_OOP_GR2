@@ -1,11 +1,5 @@
 <?php
 
-function vardump($variable){
-echo '<pre>';
-    var_dump($variable);
-    echo '</pre>';
-}
-
 session_start();
 
 require __DIR__.'/vendor/autoload.php';

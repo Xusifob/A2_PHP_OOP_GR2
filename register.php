@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Doctrine\ORM\EntityManager $em */
-$em = require __DIR__ . '/header.php';
+$em = require __DIR__ . '/_header.php';
 
 use Xusifob\PokemonBattle\Trainer;
 

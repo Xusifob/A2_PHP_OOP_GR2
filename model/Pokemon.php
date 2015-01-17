@@ -13,7 +13,7 @@ namespace Xusifob\PokemonBattle;
  *
  * @package Xusifob\PokemonBattle
  *
- * * @Entity
+ * @Entity
  * @Table(name="pokemon")
  */
 class Pokemon implements Model\PokemonInterface {

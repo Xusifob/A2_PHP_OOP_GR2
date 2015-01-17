@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Doctrine\ORM\EntityManager $em */
-$em = require __DIR__ . '/header_connect.php';
+$em = require __DIR__ . '/_header_connect.php';
 
 use Xusifob\PokemonBattle\Pokemon;
 
@@ -63,13 +63,19 @@ $dHeal = 0;
                 // Create the new pokemon
                 try {
                     $pokemon
-                        ->setType($_POST['type'])
                         ->setTrainer($trainer)
                         ->setHP(100)
                         ->setName($_POST['name'])
                         ->setLastfight(1)
                         ->setLastHeal(1)
                     ;
+                    if($_POST['type'] == 'fire')
+                        $pokemon->setType(Pokemon::TYPE_FIRE);
+                    elseif($_POST['type'] == 'water')
+                        $pokemon->setType(Pokemon::TYPE_WATER);
+                    elseif($_POST['type'] == 'plant')
+                        $pokemon->setType(Pokemon::TYPE_PLANT);
+
                 }
                 catch(Exception $e){
                     $error = $e->getMessage();
