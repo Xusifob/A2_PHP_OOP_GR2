@@ -3,7 +3,14 @@
 /** @var \Doctrine\ORM\EntityManager $em */
 $em = require __DIR__ . '/_header.php';
 
-$error = NULL;
+if(isset($_GET['action'])) {
+    if ($_GET['action'] == 'logout')
+        $error = 'You\'ve been disconnected';
+    elseif ($_GET['action'] == 'connect')
+        $error = "Haha you tried to hack me, Bitch!";
+}
+else
+    $error = NULL;
 if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])){
 
     /** @var \Doctrine\ORM\EntityRepository $trainerRepo */

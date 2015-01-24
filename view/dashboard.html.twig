@@ -2,6 +2,7 @@
 {% block content %}
     <div class="text-center">
         <h1>Dashboard</h1>
+        <a href="logout.php" class="btn btn-default">Logout</a>
     </div>
     {% if NULL != error  %}
         <div class="alert alert-danger fade in" role="alert">
@@ -51,14 +52,14 @@
         {% if pokemon.hp == 0 and true == heal %}
             <a href="heal.php" class="btn btn-default">Resuscitate</a>
         {% elseif pokemon.hp == 0 and true != heal %}
-            <p class="alert-danger">You can't heal your pokemon until : {{ dHeal }} second</p>
+            <p class="alert-danger">You can't heal your pokemon until : {% if(healAffiche.heure != 0) %} {{ healAffiche.heure }}h {% endif %} {%  if(healAffiche.minutes != 0) %} {{ healAffiche.minutes }} minuts et {% endif %} {{ healAffiche.secondes }} second</p>
         {% endif %}
         {% if true == fight and pokemon.hp != 0 %}
             <div class="text-center">
                 <a href="fight.php" class="btn btn-default">FIGHT</a>
             </div>
         {% elseif pokemon.hp != 0 %}
-            <p>Your pokemon can't fight until : {{ delta }} second</p>
+            <p>Your pokemon can't fight until : {% if(fightaffiche.heure != 0) %} {{ fightaffiche.heure }}h {% endif %} {%  if(fightaffiche.minutes != 0) %} {{ fightaffiche.minutes }} minuts et {% endif %} {{ fightaffiche.secondes }} second</p>
 11        {% endif %}
     </div>
 {% endif %}

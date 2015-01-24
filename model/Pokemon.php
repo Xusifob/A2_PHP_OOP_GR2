@@ -137,6 +137,7 @@ class Pokemon implements Model\PokemonInterface {
      */
     public function addHP($hp){
         if(is_int($hp) && $hp>0)
+            // The hp can't be > 100
             $this->hp = min($this->hp + $hp, 100);
         else
             throw new \Exception('HP you add must be an integer > 0');
@@ -151,6 +152,7 @@ class Pokemon implements Model\PokemonInterface {
      */
     public function removeHP($hp){
         if(is_int($hp) && $hp>0)
+            // The hp can't be < 0
             $this->hp = max($this->hp - $hp,0);
         else
             throw new \Exception('HP you remove must be an integer > 0');

@@ -105,4 +105,6 @@ echo $twig ->render('dashboard.html.twig',[
     'delta' => $delta,
     'dHeal' => $dHeal,
     'heal' => $heal,
+    'fightaffiche' => TransformHour($delta),
+    'healAffiche' => TransformHour($dHeal),
 ]);
