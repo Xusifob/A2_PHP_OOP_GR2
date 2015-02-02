@@ -1,0 +1,27 @@
+{
+    "name": "Bastien/a2_php_oop_gr2",
+    "description": "Let them fight !",
+    "require": {
+        "doctrine/dbal": "~2.5",
+        "doctrine/orm": "~2.3",
+        "symfony/console": "~2.5",
+        "twig/twig": "~1.16",
+        "twitter/bootstrap": "~3.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xusifob",
+            "email": "bastien@bastienmalahieude.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Xusifob\\PokemonBattle\\": "model"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
